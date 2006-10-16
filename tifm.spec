@@ -17,21 +17,22 @@
 # main package.
 #
 %define		_rel	0.1
-Summary:	Free source linux driver for TI FlashMedia family of devices. 
-Summary(pl):	Otwarty linuxowy sterownik dla urzadzen TI Flashmedia 
+######		Unknown group!
+Summary:	Free source linux driver for TI FlashMedia family of devices.
+Summary(pl):	Otwarty linuxowy sterownik dla urzadzen TI Flashmedia
 Name:		tifm
 Version:	0.6b
 Release:	%{_rel}
 Epoch:		0
 License:	GPL
 Group:		kernel
-# 
+#
 # Source0:	%{name}-%{version}.tar.gz
 Source0:	http://download.berlios.de/tifmxx/%{name}-%{version}.tar.bz2
 # Source0-md5:	e48d47260cda579362f14a9a81bd75dc
 #Source1:	-
 # Source1-md5:	-
-#Patch0:	%{name}-what.patch
+#Patch0: %{name}-what.patch
 URL:		http://openfacts.berlios.de/index-en.phtml?title=TI_FlashMedia_xx12/xx21_driver
 %if %{with kernel}
 %{?with_dist_kernel:BuildRequires:	kernel%{_alt_kernel}-module-build >= 3:2.6.14}
@@ -48,16 +49,17 @@ BuildRequires:	rpmbuild(macros) >= 1.308
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-Free source linux driver for TI FlashMedia xx12/xx21 family of devices. 
+Free source linux driver for TI FlashMedia xx12/xx21 family of
+devices.
 
 %description -l pl
-Otwarty linuxowy sterownik dla urzadzen TI Flasmedia xx12/xx21 
+Otwarty linuxowy sterownik dla urzadzen TI Flasmedia xx12/xx21
 
 # kernel subpackages.
 
 %package -n kernel%{_alt_kernel}-misc-tifm
-Summary:	Linux driver for TI FlashMedia xx12/xx21 family of devices. 
-Summary(pl):	Sterownik dla Linuksa do urzadzen TI FlashMedia xx12/xx21  
+Summary:	Linux driver for TI FlashMedia xx12/xx21 family of devices.
+Summary(pl):	Sterownik dla Linuksa do urzadzen TI FlashMedia xx12/xx21
 Release:	%{_rel}@%{_kernel_ver_str}
 Group:		Base/Kernel
 Requires(post,postun):	/sbin/depmod
