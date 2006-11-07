@@ -7,6 +7,7 @@
 %define		_rel	0.3
 %define		_module	tifm
 Summary:	Linux driver for TI FlashMedia xx12/xx21 storage controllers
+Summary(pl):	Linuksowy sterownik dla kontrolerów pamiêci TI FlashMedia xx12/xx21
 Name:		%{_module}
 Version:	0.6b
 Release:	%{_rel}@%{_kernel_ver_str}
@@ -23,10 +24,10 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 This project is devoted to the development of the acceptable and free
-source linux driver for TI FlashMedia family of devices. These devices
+source Linux driver for TI FlashMedia family of devices. These devices
 are found in a vast majority of the modern laptops. Unfortunately, TI
 refused to publish a complete datasheet for any of the FlashMedia
-devices rendering them useless anywhere except M$ Windows (not unlike
+devices rendering them useless anywhere except MS Windows (not unlike
 many other hardware vendors).
 
 Windows drivers to the mentioned devices are available from nearly all
@@ -34,9 +35,23 @@ major computer vendors both for Win32 and Win64 platforms. They
 support all the expected functionality: SM/xD cards, MMC, SD and SDIO,
 MemoryStick and MSpro including security/DRM features.
 
+%description -l pl
+Ten projekt s³u¿y rozwojowi akceptowalnego i maj±cego wolne ¼ród³a
+linuksowego sterownika dla urz±dzeñ z rodziny TI FlashMedia.
+Urz±dzenia te mo¿na znale¼æ w wiêkszo¶ci wspó³czesnych laptopów.
+Niestety TI odmówi³ opublikowania pe³nej specyfikacji jakiegokolwiek z
+urz±dzeñ FlashMedia czyni±c je bezu¿ytecznymi poza MS Windows (w
+przeciwieñstwie do wielu innych producentów sprzêtu).
+
+Sterowniki windowsowe dla wspomnianych urz±dzeñ s± dostêpne u prawie
+ka¿dego du¿ego dostawcy komputerów dla platform Win32 i Win64.
+Obs³uguj± ca³± oczekiwan± funkcjonalno¶æ: karty SM/xD, MMC, SD i SDIO,
+MemoryStick i MSpro wraz z opcjami bezpieczeñstwa/DRM.
+
 # kernel subpackages.
 %package -n kernel-misc-%{_module}
-Summary:	Linux SMP driver for TI FlashMedia xx12/xx21 storage controllers
+Summary:	Linux driver for TI FlashMedia xx12/xx21 storage controllers
+Summary(pl):	Sterownik dla Linuksa do kontrolerów pamiêci TI FlashMedia xx12/xx21
 Release:	%{_rel}@%{_kernel_ver_str}
 Group:		Base/Kernel
 Requires(post,postun):	/sbin/depmod
@@ -46,16 +61,40 @@ Requires(postun):	%releq_kernel_up
 %endif
 
 %description -n kernel-misc-%{_module}
-Free source linux driver for TI FlashMedia xx12/xx21 family of
-devices.
+This package contains Linux driver for TI FlashMedia xx12/xx21 storage
+controllers.
+
+This project is devoted to the development of the acceptable and free
+source Linux driver for TI FlashMedia family of devices. These devices
+are found in a vast majority of the modern laptops. Unfortunately, TI
+refused to publish a complete datasheet for any of the FlashMedia
+devices rendering them useless anywhere except MS Windows (not unlike
+many other hardware vendors).
+
+Windows drivers to the mentioned devices are available from nearly all
+major computer vendors both for Win32 and Win64 platforms. They
+support all the expected functionality: SM/xD cards, MMC, SD and SDIO,
+MemoryStick and MSpro including security/DRM features.
 
 %description -n kernel-misc-%{_module} -l pl
-Sterownik dla Linuksa do TI FlashMedia z rodziny xx12/xx21.
+Ten pakiet zawiera sterownik dla Linuksa do kontrolerów pamiêci TI
+FlashMedia xx12/xx21.
 
+Ten projekt s³u¿y rozwojowi akceptowalnego i maj±cego wolne ¼ród³a
+linuksowego sterownika dla urz±dzeñ z rodziny TI FlashMedia.
+Urz±dzenia te mo¿na znale¼æ w wiêkszo¶ci wspó³czesnych laptopów.
+Niestety TI odmówi³ opublikowania pe³nej specyfikacji jakiegokolwiek z
+urz±dzeñ FlashMedia czyni±c je bezu¿ytecznymi poza MS Windows (w
+przeciwieñstwie do wielu innych producentów sprzêtu).
 
+Sterowniki windowsowe dla wspomnianych urz±dzeñ s± dostêpne u prawie
+ka¿dego du¿ego dostawcy komputerów dla platform Win32 i Win64.
+Obs³uguj± ca³± oczekiwan± funkcjonalno¶æ: karty SM/xD, MMC, SD i SDIO,
+MemoryStick i MSpro wraz z opcjami bezpieczeñstwa/DRM.
 
 %package -n kernel-smp-misc-%{_module}
 Summary:	Linux SMP driver for TI FlashMedia xx12/xx21 storage controllers
+Summary(pl):	Sterownik dla Linuksa SMP do kontrolerów pamiêci TI FlashMedia xx12/xx21
 Release:	%{_rel}@%{_kernel_ver_str}
 Group:		Base/Kernel
 Requires(post,postun):	/sbin/depmod
@@ -65,12 +104,36 @@ Requires(postun):	%releq_kernel_smp
 %endif
 
 %description -n kernel-smp-misc-%{_module}
-Free source linux driver for TI FlashMedia xx12/xx21 family of devices
-for SMP kernels.
+This package contains Linux SMP driver for TI FlashMedia xx12/xx21
+storage controllers.
+
+This project is devoted to the development of the acceptable and free
+source Linux driver for TI FlashMedia family of devices. These devices
+are found in a vast majority of the modern laptops. Unfortunately, TI
+refused to publish a complete datasheet for any of the FlashMedia
+devices rendering them useless anywhere except MS Windows (not unlike
+many other hardware vendors).
+
+Windows drivers to the mentioned devices are available from nearly all
+major computer vendors both for Win32 and Win64 platforms. They
+support all the expected functionality: SM/xD cards, MMC, SD and SDIO,
+MemoryStick and MSpro including security/DRM features.
 
 %description -n kernel-misc-%{_module} -l pl
-Sterownik dla Linuksa do TI FlashMedia z rodziny xx12/xx21 dla j±der
-SMP.
+Ten pakiet zawiera sterownik dla Linuksa SMP do kontrolerów pamiêci TI
+FlashMedia xx12/xx21.
+
+Ten projekt s³u¿y rozwojowi akceptowalnego i maj±cego wolne ¼ród³a
+linuksowego sterownika dla urz±dzeñ z rodziny TI FlashMedia.
+Urz±dzenia te mo¿na znale¼æ w wiêkszo¶ci wspó³czesnych laptopów.
+Niestety TI odmówi³ opublikowania pe³nej specyfikacji jakiegokolwiek z
+urz±dzeñ FlashMedia czyni±c je bezu¿ytecznymi poza MS Windows (w
+przeciwieñstwie do wielu innych producentów sprzêtu).
+
+Sterowniki windowsowe dla wspomnianych urz±dzeñ s± dostêpne u prawie
+ka¿dego du¿ego dostawcy komputerów dla platform Win32 i Win64.
+Obs³uguj± ca³± oczekiwan± funkcjonalno¶æ: karty SM/xD, MMC, SD i SDIO,
+MemoryStick i MSpro wraz z opcjami bezpieczeñstwa/DRM.
 
 %prep
 %setup -q -c
