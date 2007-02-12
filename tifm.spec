@@ -7,7 +7,7 @@
 %define		_rel	0.3
 %define		_module	tifm
 Summary:	Linux driver for TI FlashMedia xx12/xx21 storage controllers
-Summary(pl):	Linuksowy sterownik dla kontrolerów pamiêci TI FlashMedia xx12/xx21
+Summary(pl.UTF-8):   Linuksowy sterownik dla kontrolerÃ³w pamiÄ™ci TI FlashMedia xx12/xx21
 Name:		%{_module}
 Version:	0.6b
 Release:	%{_rel}@%{_kernel_ver_str}
@@ -35,23 +35,23 @@ major computer vendors both for Win32 and Win64 platforms. They
 support all the expected functionality: SM/xD cards, MMC, SD and SDIO,
 MemoryStick and MSpro including security/DRM features.
 
-%description -l pl
-Ten projekt s³u¿y rozwojowi akceptowalnego i maj±cego wolne ¼ród³a
-linuksowego sterownika dla urz±dzeñ z rodziny TI FlashMedia.
-Urz±dzenia te mo¿na znale¼æ w wiêkszo¶ci wspó³czesnych laptopów.
-Niestety TI odmówi³ opublikowania pe³nej specyfikacji jakiegokolwiek z
-urz±dzeñ FlashMedia czyni±c je bezu¿ytecznymi poza MS Windows (w
-przeciwieñstwie do wielu innych producentów sprzêtu).
+%description -l pl.UTF-8
+Ten projekt sÅ‚uÅ¼y rozwojowi akceptowalnego i majÄ…cego wolne ÅºrÃ³dÅ‚a
+linuksowego sterownika dla urzÄ…dzeÅ„ z rodziny TI FlashMedia.
+UrzÄ…dzenia te moÅ¼na znaleÅºÄ‡ w wiÄ™kszoÅ›ci wspÃ³Å‚czesnych laptopÃ³w.
+Niestety TI odmÃ³wiÅ‚ opublikowania peÅ‚nej specyfikacji jakiegokolwiek z
+urzÄ…dzeÅ„ FlashMedia czyniÄ…c je bezuÅ¼ytecznymi poza MS Windows (w
+przeciwieÅ„stwie do wielu innych producentÃ³w sprzÄ™tu).
 
-Sterowniki windowsowe dla wspomnianych urz±dzeñ s± dostêpne u prawie
-ka¿dego du¿ego dostawcy komputerów dla platform Win32 i Win64.
-Obs³uguj± ca³± oczekiwan± funkcjonalno¶æ: karty SM/xD, MMC, SD i SDIO,
-MemoryStick i MSpro wraz z opcjami bezpieczeñstwa/DRM.
+Sterowniki windowsowe dla wspomnianych urzÄ…dzeÅ„ sÄ… dostÄ™pne u prawie
+kaÅ¼dego duÅ¼ego dostawcy komputerÃ³w dla platform Win32 i Win64.
+ObsÅ‚ugujÄ… caÅ‚Ä… oczekiwanÄ… funkcjonalnoÅ›Ä‡: karty SM/xD, MMC, SD i SDIO,
+MemoryStick i MSpro wraz z opcjami bezpieczeÅ„stwa/DRM.
 
 # kernel subpackages.
 %package -n kernel-misc-%{_module}
 Summary:	Linux driver for TI FlashMedia xx12/xx21 storage controllers
-Summary(pl):	Sterownik dla Linuksa do kontrolerów pamiêci TI FlashMedia xx12/xx21
+Summary(pl.UTF-8):   Sterownik dla Linuksa do kontrolerÃ³w pamiÄ™ci TI FlashMedia xx12/xx21
 Release:	%{_rel}@%{_kernel_ver_str}
 Group:		Base/Kernel
 Requires(post,postun):	/sbin/depmod
@@ -76,25 +76,25 @@ major computer vendors both for Win32 and Win64 platforms. They
 support all the expected functionality: SM/xD cards, MMC, SD and SDIO,
 MemoryStick and MSpro including security/DRM features.
 
-%description -n kernel-misc-%{_module} -l pl
-Ten pakiet zawiera sterownik dla Linuksa do kontrolerów pamiêci TI
+%description -n kernel-misc-%{_module} -l pl.UTF-8
+Ten pakiet zawiera sterownik dla Linuksa do kontrolerÃ³w pamiÄ™ci TI
 FlashMedia xx12/xx21.
 
-Ten projekt s³u¿y rozwojowi akceptowalnego i maj±cego wolne ¼ród³a
-linuksowego sterownika dla urz±dzeñ z rodziny TI FlashMedia.
-Urz±dzenia te mo¿na znale¼æ w wiêkszo¶ci wspó³czesnych laptopów.
-Niestety TI odmówi³ opublikowania pe³nej specyfikacji jakiegokolwiek z
-urz±dzeñ FlashMedia czyni±c je bezu¿ytecznymi poza MS Windows (w
-przeciwieñstwie do wielu innych producentów sprzêtu).
+Ten projekt sÅ‚uÅ¼y rozwojowi akceptowalnego i majÄ…cego wolne ÅºrÃ³dÅ‚a
+linuksowego sterownika dla urzÄ…dzeÅ„ z rodziny TI FlashMedia.
+UrzÄ…dzenia te moÅ¼na znaleÅºÄ‡ w wiÄ™kszoÅ›ci wspÃ³Å‚czesnych laptopÃ³w.
+Niestety TI odmÃ³wiÅ‚ opublikowania peÅ‚nej specyfikacji jakiegokolwiek z
+urzÄ…dzeÅ„ FlashMedia czyniÄ…c je bezuÅ¼ytecznymi poza MS Windows (w
+przeciwieÅ„stwie do wielu innych producentÃ³w sprzÄ™tu).
 
-Sterowniki windowsowe dla wspomnianych urz±dzeñ s± dostêpne u prawie
-ka¿dego du¿ego dostawcy komputerów dla platform Win32 i Win64.
-Obs³uguj± ca³± oczekiwan± funkcjonalno¶æ: karty SM/xD, MMC, SD i SDIO,
-MemoryStick i MSpro wraz z opcjami bezpieczeñstwa/DRM.
+Sterowniki windowsowe dla wspomnianych urzÄ…dzeÅ„ sÄ… dostÄ™pne u prawie
+kaÅ¼dego duÅ¼ego dostawcy komputerÃ³w dla platform Win32 i Win64.
+ObsÅ‚ugujÄ… caÅ‚Ä… oczekiwanÄ… funkcjonalnoÅ›Ä‡: karty SM/xD, MMC, SD i SDIO,
+MemoryStick i MSpro wraz z opcjami bezpieczeÅ„stwa/DRM.
 
 %package -n kernel-smp-misc-%{_module}
 Summary:	Linux SMP driver for TI FlashMedia xx12/xx21 storage controllers
-Summary(pl):	Sterownik dla Linuksa SMP do kontrolerów pamiêci TI FlashMedia xx12/xx21
+Summary(pl.UTF-8):   Sterownik dla Linuksa SMP do kontrolerÃ³w pamiÄ™ci TI FlashMedia xx12/xx21
 Release:	%{_rel}@%{_kernel_ver_str}
 Group:		Base/Kernel
 Requires(post,postun):	/sbin/depmod
@@ -119,21 +119,21 @@ major computer vendors both for Win32 and Win64 platforms. They
 support all the expected functionality: SM/xD cards, MMC, SD and SDIO,
 MemoryStick and MSpro including security/DRM features.
 
-%description -n kernel-misc-%{_module} -l pl
-Ten pakiet zawiera sterownik dla Linuksa SMP do kontrolerów pamiêci TI
+%description -n kernel-misc-%{_module} -l pl.UTF-8
+Ten pakiet zawiera sterownik dla Linuksa SMP do kontrolerÃ³w pamiÄ™ci TI
 FlashMedia xx12/xx21.
 
-Ten projekt s³u¿y rozwojowi akceptowalnego i maj±cego wolne ¼ród³a
-linuksowego sterownika dla urz±dzeñ z rodziny TI FlashMedia.
-Urz±dzenia te mo¿na znale¼æ w wiêkszo¶ci wspó³czesnych laptopów.
-Niestety TI odmówi³ opublikowania pe³nej specyfikacji jakiegokolwiek z
-urz±dzeñ FlashMedia czyni±c je bezu¿ytecznymi poza MS Windows (w
-przeciwieñstwie do wielu innych producentów sprzêtu).
+Ten projekt sÅ‚uÅ¼y rozwojowi akceptowalnego i majÄ…cego wolne ÅºrÃ³dÅ‚a
+linuksowego sterownika dla urzÄ…dzeÅ„ z rodziny TI FlashMedia.
+UrzÄ…dzenia te moÅ¼na znaleÅºÄ‡ w wiÄ™kszoÅ›ci wspÃ³Å‚czesnych laptopÃ³w.
+Niestety TI odmÃ³wiÅ‚ opublikowania peÅ‚nej specyfikacji jakiegokolwiek z
+urzÄ…dzeÅ„ FlashMedia czyniÄ…c je bezuÅ¼ytecznymi poza MS Windows (w
+przeciwieÅ„stwie do wielu innych producentÃ³w sprzÄ™tu).
 
-Sterowniki windowsowe dla wspomnianych urz±dzeñ s± dostêpne u prawie
-ka¿dego du¿ego dostawcy komputerów dla platform Win32 i Win64.
-Obs³uguj± ca³± oczekiwan± funkcjonalno¶æ: karty SM/xD, MMC, SD i SDIO,
-MemoryStick i MSpro wraz z opcjami bezpieczeñstwa/DRM.
+Sterowniki windowsowe dla wspomnianych urzÄ…dzeÅ„ sÄ… dostÄ™pne u prawie
+kaÅ¼dego duÅ¼ego dostawcy komputerÃ³w dla platform Win32 i Win64.
+ObsÅ‚ugujÄ… caÅ‚Ä… oczekiwanÄ… funkcjonalnoÅ›Ä‡: karty SM/xD, MMC, SD i SDIO,
+MemoryStick i MSpro wraz z opcjami bezpieczeÅ„stwa/DRM.
 
 %prep
 %setup -q -c
