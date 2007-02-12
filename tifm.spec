@@ -7,7 +7,7 @@
 %define		_rel	0.3
 %define		_module	tifm
 Summary:	Linux driver for TI FlashMedia xx12/xx21 storage controllers
-Summary(pl.UTF-8):   Linuksowy sterownik dla kontrolerów pamięci TI FlashMedia xx12/xx21
+Summary(pl.UTF-8):	Linuksowy sterownik dla kontrolerów pamięci TI FlashMedia xx12/xx21
 Name:		%{_module}
 Version:	0.6b
 Release:	%{_rel}@%{_kernel_ver_str}
@@ -51,7 +51,7 @@ MemoryStick i MSpro wraz z opcjami bezpieczeństwa/DRM.
 # kernel subpackages.
 %package -n kernel-misc-%{_module}
 Summary:	Linux driver for TI FlashMedia xx12/xx21 storage controllers
-Summary(pl.UTF-8):   Sterownik dla Linuksa do kontrolerów pamięci TI FlashMedia xx12/xx21
+Summary(pl.UTF-8):	Sterownik dla Linuksa do kontrolerów pamięci TI FlashMedia xx12/xx21
 Release:	%{_rel}@%{_kernel_ver_str}
 Group:		Base/Kernel
 Requires(post,postun):	/sbin/depmod
@@ -94,7 +94,7 @@ MemoryStick i MSpro wraz z opcjami bezpieczeństwa/DRM.
 
 %package -n kernel-smp-misc-%{_module}
 Summary:	Linux SMP driver for TI FlashMedia xx12/xx21 storage controllers
-Summary(pl.UTF-8):   Sterownik dla Linuksa SMP do kontrolerów pamięci TI FlashMedia xx12/xx21
+Summary(pl.UTF-8):	Sterownik dla Linuksa SMP do kontrolerów pamięci TI FlashMedia xx12/xx21
 Release:	%{_rel}@%{_kernel_ver_str}
 Group:		Base/Kernel
 Requires(post,postun):	/sbin/depmod
