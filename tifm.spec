@@ -1,21 +1,19 @@
 #
 # Conditional build:
 %bcond_without	dist_kernel	# allow non-distribution kernel
-%bcond_without	smp		# don't build SMP module
 %bcond_with	verbose		# verbose build (V=1)
 
-%define		_rel	0.3
+%define		_rel	0.1
 %define		_module	tifm
 Summary:	Linux driver for TI FlashMedia xx12/xx21 storage controllers
 Summary(pl.UTF-8):	Linuksowy sterownik dla kontrolerów pamięci TI FlashMedia xx12/xx21
 Name:		%{_module}
-Version:	0.6b
+Version:	0.8d
 Release:	%{_rel}@%{_kernel_ver_str}
 License:	GPL v2
 Group:		Base/Kernel
 Source0:	http://download.berlios.de/tifmxx/%{name}-%{version}.tar.bz2
-# Source0-md5:	e48d47260cda579362f14a9a81bd75dc
-Patch0:		kernel-misc-%{name}-7420_7620.patch
+# Source0-md5:	7636abc4e39053d3856c63effc6d60bd
 URL:		http://developer.berlios.de/projects/tifmxx
 %{?with_dist_kernel:BuildRequires:	kernel-module-build >= 3:2.6.7}
 BuildRequires:	rpmbuild(macros) >= 1.308
@@ -49,18 +47,18 @@ Obsługują całą oczekiwaną funkcjonalność: karty SM/xD, MMC, SD i SDIO,
 MemoryStick i MSpro wraz z opcjami bezpieczeństwa/DRM.
 
 # kernel subpackages.
-%package -n kernel-misc-%{_module}
+%package -n kernel%{_alt_kernel}-misc-%{_module}
 Summary:	Linux driver for TI FlashMedia xx12/xx21 storage controllers
 Summary(pl.UTF-8):	Sterownik dla Linuksa do kontrolerów pamięci TI FlashMedia xx12/xx21
 Release:	%{_rel}@%{_kernel_ver_str}
 Group:		Base/Kernel
 Requires(post,postun):	/sbin/depmod
 %if %{with dist_kernel}
-%requires_releq_kernel_up
-Requires(postun):	%releq_kernel_up
+%requires_releq_kernel
+Requires(postun):	%releq_kernel
 %endif
 
-%description -n kernel-misc-%{_module}
+%description -n kernel%{_alt_kernel}-misc-%{_module}
 This package contains Linux driver for TI FlashMedia xx12/xx21 storage
 controllers.
 
@@ -76,51 +74,8 @@ major computer vendors both for Win32 and Win64 platforms. They
 support all the expected functionality: SM/xD cards, MMC, SD and SDIO,
 MemoryStick and MSpro including security/DRM features.
 
-%description -n kernel-misc-%{_module} -l pl.UTF-8
+%description -n kernel%{_alt_kernel}-misc-%{_module} -l pl.UTF-8
 Ten pakiet zawiera sterownik dla Linuksa do kontrolerów pamięci TI
-FlashMedia xx12/xx21.
-
-Ten projekt służy rozwojowi akceptowalnego i mającego wolne źródła
-linuksowego sterownika dla urządzeń z rodziny TI FlashMedia.
-Urządzenia te można znaleźć w większości współczesnych laptopów.
-Niestety TI odmówił opublikowania pełnej specyfikacji jakiegokolwiek z
-urządzeń FlashMedia czyniąc je bezużytecznymi poza MS Windows (w
-przeciwieństwie do wielu innych producentów sprzętu).
-
-Sterowniki windowsowe dla wspomnianych urządzeń są dostępne u prawie
-każdego dużego dostawcy komputerów dla platform Win32 i Win64.
-Obsługują całą oczekiwaną funkcjonalność: karty SM/xD, MMC, SD i SDIO,
-MemoryStick i MSpro wraz z opcjami bezpieczeństwa/DRM.
-
-%package -n kernel-smp-misc-%{_module}
-Summary:	Linux SMP driver for TI FlashMedia xx12/xx21 storage controllers
-Summary(pl.UTF-8):	Sterownik dla Linuksa SMP do kontrolerów pamięci TI FlashMedia xx12/xx21
-Release:	%{_rel}@%{_kernel_ver_str}
-Group:		Base/Kernel
-Requires(post,postun):	/sbin/depmod
-%if %{with dist_kernel}
-%requires_releq_kernel_smp
-Requires(postun):	%releq_kernel_smp
-%endif
-
-%description -n kernel-smp-misc-%{_module}
-This package contains Linux SMP driver for TI FlashMedia xx12/xx21
-storage controllers.
-
-This project is devoted to the development of the acceptable and free
-source Linux driver for TI FlashMedia family of devices. These devices
-are found in a vast majority of the modern laptops. Unfortunately, TI
-refused to publish a complete datasheet for any of the FlashMedia
-devices rendering them useless anywhere except MS Windows (not unlike
-many other hardware vendors).
-
-Windows drivers to the mentioned devices are available from nearly all
-major computer vendors both for Win32 and Win64 platforms. They
-support all the expected functionality: SM/xD cards, MMC, SD and SDIO,
-MemoryStick and MSpro including security/DRM features.
-
-%description -n kernel-misc-%{_module} -l pl.UTF-8
-Ten pakiet zawiera sterownik dla Linuksa SMP do kontrolerów pamięci TI
 FlashMedia xx12/xx21.
 
 Ten projekt służy rozwojowi akceptowalnego i mającego wolne źródła
@@ -137,77 +92,26 @@ MemoryStick i MSpro wraz z opcjami bezpieczeństwa/DRM.
 
 %prep
 %setup -q -c
-%patch0 -p1
 
 %build
-# kernel module(s)
-for cfg in %{?with_dist_kernel:%{?with_smp:smp} up}%{!?with_dist_kernel:nondist}; do
-	if [ ! -r "%{_kernelsrcdir}/config-$cfg" ]; then
-		exit 1
-	fi
-	install -d o/include/linux
-	ln -sf %{_kernelsrcdir}/config-$cfg o/.config
-	ln -sf %{_kernelsrcdir}/Module.symvers-$cfg o/Module.symvers
-	ln -sf %{_kernelsrcdir}/include/linux/autoconf-$cfg.h o/include/linux/autoconf.h
-%if %{with dist_kernel}
-	%{__make} -j1 -C %{_kernelsrcdir} O=$PWD/o prepare scripts
-%else
-	install -d o/include/config
-	touch o/include/config/MARKER
-	ln -sf %{_kernelsrcdir}/scripts o/scripts
-%endif
-	%{__make} -C %{_kernelsrcdir} clean \
-		RCS_FIND_IGNORE="-name '*.ko' -o" \
-		M=$PWD O=$PWD/o KSRC=$PWD/o\
-		%{?with_verbose:V=1}
-	%{__make} -C %{_kernelsrcdir} modules \
-		M=$PWD O=$PWD/o KSRC=$PWD/o\
-		%{?with_verbose:V=1}
-	for mod in tifm_7xx1 tifm_core tifm_sd; do
-		mv $mod{,-$cfg}.ko
-	done
-done
+%build_kernel_modules -m %{_module}{_7xx1,_core,_sd}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT/lib/modules/%{_kernel_ver}{,smp}/misc
-
-install %{_module}_7xx1-%{?with_dist_kernel:up}%{!?with_dist_kernel:nondist}.ko \
-	$RPM_BUILD_ROOT/lib/modules/%{_kernel_ver}/misc/%{_module}_7xx1.ko
-install %{_module}_core-%{?with_dist_kernel:up}%{!?with_dist_kernel:nondist}.ko \
-	$RPM_BUILD_ROOT/lib/modules/%{_kernel_ver}/misc/%{_module}_core.ko
-install %{_module}_sd-%{?with_dist_kernel:up}%{!?with_dist_kernel:nondist}.ko \
-	$RPM_BUILD_ROOT/lib/modules/%{_kernel_ver}/misc/%{_module}_sd.ko
-%if %{with smp} && %{with dist_kernel}
-install %{_module}_7xx1-smp.ko \
-	$RPM_BUILD_ROOT/lib/modules/%{_kernel_ver}smp/misc/%{_module}_7xx1.ko
-install %{_module}_core-smp.ko \
-	$RPM_BUILD_ROOT/lib/modules/%{_kernel_ver}smp/misc/%{_module}_core.ko
-install %{_module}_sd-smp.ko \
-	$RPM_BUILD_ROOT/lib/modules/%{_kernel_ver}smp/misc/%{_module}_sd.ko
-%endif
+%install_kernel_modules  -s current -n %{_module} -m %{_module}{_7xx1,_core,_sd} -d misc
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post
+%post -n kernel%{_alt_kernel}-misc-%{_module}
 %depmod %{_kernel_ver}
 
-%postun
+%postun -n kernel%{_alt_kernel}-misc-%{_module}
 %depmod %{_kernel_ver}
 
-%post	-n kernel-smp-misc-%{_module}
-%depmod %{_kernel_ver}smp
-
-%postun -n kernel-smp-misc-%{_module}
-%depmod %{_kernel_ver}smp
-
-%files -n kernel-misc-%{_module}
+%if %{with dist_kernel}
+%files -n kernel%{_alt_kernel}-misc-%{_module}
 %defattr(644,root,root,755)
-/lib/modules/%{_kernel_ver}/misc/*.ko*
-
-%if %{with smp} && %{with dist_kernel}
-%files -n kernel-smp-misc-%{_module}
-%defattr(644,root,root,755)
-/lib/modules/%{_kernel_ver}smp/misc/*.ko*
+/lib/modules/%{_kernel_ver}/misc/%{_module}*.ko*
+%{_sysconfdir}/modprobe.d/%{_kernel_ver}/%{name}.conf
 %endif
