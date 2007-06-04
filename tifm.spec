@@ -8,14 +8,14 @@
 Summary:	Linux driver for TI FlashMedia xx12/xx21 storage controllers
 Summary(pl.UTF-8):	Linuksowy sterownik dla kontrolerów pamięci TI FlashMedia xx12/xx21
 Name:		%{_module}
-Version:	0.8d
+Version:	0.8e
 Release:	%{_rel}@%{_kernel_ver_str}
 License:	GPL v2
 Group:		Base/Kernel
 Source0:	http://download.berlios.de/tifmxx/%{name}-%{version}.tar.bz2
-# Source0-md5:	7636abc4e39053d3856c63effc6d60bd
+# Source0-md5:	5a148e53eeaadde1d0e1284e367d563b
 URL:		http://developer.berlios.de/projects/tifmxx
-%{?with_dist_kernel:BuildRequires:	kernel-module-build >= 3:2.6.7}
+%{?with_dist_kernel:BuildRequires:	kernel-module-build >= 3:2.6.21}
 BuildRequires:	rpmbuild(macros) >= 1.308
 ExclusiveArch:	%{ix86}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
